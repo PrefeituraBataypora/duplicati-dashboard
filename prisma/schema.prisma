@@ -6,3 +6,85 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Device {
+  id        String    @id @default(uuid())
+  alias     String?
+  ip        String    @unique
+  port      Int
+  state     String?
+  lastCheck DateTime?
+  lastSync  DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  systemInfo  SystemInfo?
+  serverState ServerState?
+  backups     Backup[]
+}
+
+model SystemInfo {
+  id       String @id @default(uuid())
+  deviceId String @unique
+
+  MachineName String
+  OSVersion   String
+  OSType      String
+  UserName    String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  device Device @relation(fields: [deviceId], references: [id])
+
+  @@map("system_info")
+}
+
+model ServerState {
+  id       String @id @default(uuid())
+  deviceId String @unique
+
+  ProgramState     String
+  ProposedSchedule Json[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  device Device @relation(fields: [deviceId], references: [id])
+
+  @@map("server_state")
+}
+
+model Backup {
+  id       String @id @default(uuid())
+  deviceId String
+
+  duplicatiId String @unique
+  description String
+  targetUrl   String
+  metadata    Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  device   Device     @relation(fields: [deviceId], references: [id])
+  schedule Schedule[]
+
+  @@map("backup")
+}
+
+model Schedule {
+  id       String @id @default(uuid())
+  backupId String @unique
+
+  allowedDays String[]
+  lastRun     String
+  repeat      String
+  time        String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  backup Backup @relation(fields: [backupId], references: [id])
+}
