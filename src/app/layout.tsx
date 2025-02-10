@@ -3,6 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme";
 import { QueryProvider } from "@/providers/query";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/sidebar";
+import { TabStoreProvider } from "@/providers/tab";
+import { Navbar } from "@/components/navbar";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,9 +23,20 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <html lang="pt-br">
       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-        <QueryProvider>
-          <body className={`${inter.variable} antialiased`}>{children}</body>
-        </QueryProvider>
+        <TabStoreProvider>
+          <QueryProvider>
+            <body className={`${inter.variable} antialiased`}>
+              <SidebarProvider>
+                <AppSidebar />
+                <div className="flex flex-col gap-2 w-full p-2">
+                  <Navbar />
+                  <Toaster richColors closeButton />
+                  {children}
+                </div>
+              </SidebarProvider>
+            </body>
+          </QueryProvider>
+        </TabStoreProvider>
       </ThemeProvider>
     </html>
   );
