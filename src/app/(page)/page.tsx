@@ -1,5 +1,36 @@
+"use client";
+import { getDevices } from "@/actions/device/get-devices";
+import { DetailsPage } from "@/components/device/details";
+import { DevicesTable } from "@/components/device/table";
+import { DeviceTableItem } from "@/components/device/table/item";
+import { useTabStore } from "@/providers/tab";
+import { useQuery } from "@tanstack/react-query";
+
 const Page = () => {
-  return <div>Page</div>;
+  const { tab } = useTabStore((state) => state);
+
+  const { data: devices, isFetching } = useQuery({
+    queryKey: ["devices"],
+    queryFn: getDevices,
+  });
+
+  if (!devices || isFetching) {
+    return <div>Não há dispositivos</div>;
+  }
+
+  if (tab === "details") {
+    return <DetailsPage />;
+  }
+
+  return (
+    <div>
+      <DevicesTable>
+        {devices.map((device) => {
+          return <DeviceTableItem key={device.id} device={device} />;
+        })}
+      </DevicesTable>
+    </div>
+  );
 };
 
 export default Page;
