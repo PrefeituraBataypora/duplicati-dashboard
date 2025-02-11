@@ -23,7 +23,7 @@ import { Label } from "@/components/ui/label";
 
 const createDeviceSchema = z.object({
   ip: z.string().ip({ version: "v4", message: "Necessita ser um IP válido" }),
-  port: z
+  port: z.coerce
     .number()
     .int()
     .min(3000, { message: "Porta deve ser maior que 3000" })
@@ -95,11 +95,11 @@ const CreateDevice = () => {
             <Input
               disabled={isSubmitting}
               placeholder="Digite a porta do dispositivo"
-              type="text"
+              type="number"
               {...register("port")}
             />
-            {errors.ip && (
-              <span className="text-red-500">{errors.ip.message}</span>
+            {errors.port && (
+              <span className="text-red-500">{errors.port.message}</span>
             )}
           </div>
           <DialogFooter>
