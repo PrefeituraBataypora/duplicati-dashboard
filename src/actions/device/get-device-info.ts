@@ -15,7 +15,8 @@ const getDeviceInfo = async ({ id }: GetDeviceInfoProps) => {
       include: {
         backups: {
           include: {
-            schedule: true
+            schedule: true,
+            logs: true
           }
         },
         systemInfo: true,
