@@ -36,7 +36,7 @@ model SystemInfo {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  device Device @relation(fields: [deviceId], references: [id])
+  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("system_info")
 }
@@ -51,7 +51,7 @@ model ServerState {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  device Device @relation(fields: [deviceId], references: [id])
+  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("server_state")
 }
@@ -68,8 +68,9 @@ model Backup {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  device   Device     @relation(fields: [deviceId], references: [id])
+  device   Device      @relation(fields: [deviceId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   schedule Schedule[]
+  logs     BackupLog[]
 
   @@map("backup")
 }
@@ -86,5 +87,26 @@ model Schedule {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  backup Backup @relation(fields: [backupId], references: [id])
+  backup Backup @relation(fields: [backupId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("schedule")
+}
+
+model BackupLog {
+  id       String @id @default(uuid())
+  backupId String
+  logId    Int    @unique
+
+  exception   String
+  message     String
+  operationid String
+  timestamp   DateTime
+  type        String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  backup Backup @relation(fields: [backupId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("backup_log")
 }
