@@ -3,9 +3,10 @@
 import { useTheme } from "next-themes";
 import { Button } from "../ui/button";
 import {
-    DropdownMenu,
-    DropdownMenuCheckboxItem,
-    DropdownMenuContent, DropdownMenuTrigger
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { LaptopMinimal, Moon, Sun } from "lucide-react";
 
@@ -28,7 +29,7 @@ const ChangeThemeDropdown = () => {
           checked={theme === "light"}
           onClick={() => setTheme("light")}
         >
-          <Sun />
+          <Sun size={16} />
           Claro
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
@@ -36,7 +37,7 @@ const ChangeThemeDropdown = () => {
           checked={theme === "dark"}
           onClick={() => setTheme("dark")}
         >
-          <Moon />
+          <Moon size={16} />
           Escuro
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
@@ -44,7 +45,7 @@ const ChangeThemeDropdown = () => {
           checked={theme === "system"}
           onClick={() => setTheme("system")}
         >
-          <LaptopMinimal />
+          <LaptopMinimal size={16} />
           Sistema
         </DropdownMenuCheckboxItem>
       </DropdownMenuContent>
