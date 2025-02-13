@@ -141,3 +141,6 @@ prisma/migrations
 # docker
 Dockerfile
 compose*
+
+# package
+package-lock*
