@@ -11,7 +11,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { dayjs } from "@/lib/dayjs";
 import { Button } from "@/components/ui/button";
-import { RefreshCcw } from "lucide-react";
+import { Pencil, Play, RefreshCcw } from "lucide-react";
 import { DeleteDevice } from "../delete";
 import { toast } from "sonner";
 
@@ -74,7 +74,6 @@ const DeviceTableItem = ({
         });
         queryClient.invalidateQueries({ queryKey: ["device-item", ip] });
         toast.error(`Erro ao atualizar informações do dispositivo ${ip}`);
-        
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter, refreshTrigger]);
@@ -114,9 +113,22 @@ const DeviceTableItem = ({
       </TableCell>
       <TableCell>{device.state}</TableCell>
       <TableCell>{dayjs().to(device.updatedAt)}</TableCell>
-      <TableCell className="flex items-center gap-2">
-        <Button size="icon" variant="outline" onClick={() => setRefreshTrigger(counter + 1)}>
+      <TableCell className="flex items-center gap-2 !justify-end">
+        <Button className="flex items-center gap-2" variant="outline">
+          <Play />
+          Iniciar Backup
+        </Button>
+        <Button
+          className="flex items-center gap-2"
+          variant="outline"
+          onClick={() => setRefreshTrigger(counter + 1)}
+        >
           <RefreshCcw />
+          Atualizar
+        </Button>
+        <Button className="flex items-center gap-2" variant="outline">
+          <Pencil />
+          Editar
         </Button>
         <DeleteDevice id={device.id} ip={device.ip} />
       </TableCell>

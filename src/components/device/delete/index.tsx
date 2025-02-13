@@ -38,8 +38,9 @@ const DeleteDevice = ({ id, ip }: DeleteDeviceProps) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="destructive" size="icon">
+        <Button variant="destructive" className="flex items-center gap-2">
           <Trash2 />
+          Excluir
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>

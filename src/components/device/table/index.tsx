@@ -21,7 +21,7 @@ const DevicesTable = ({ children }: DeviceTableItemProps) => {
           <TableHead>Próximo Backup</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Última atualização</TableHead>
-          <TableHead>Ações</TableHead>
+          <TableHead className="text-end">Ações</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>{children}</TableBody>
