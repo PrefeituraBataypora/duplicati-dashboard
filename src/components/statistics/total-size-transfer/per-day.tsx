@@ -32,7 +32,7 @@ const TotalSizeTransferPerDay = () => {
   if (isError) {
     toast.error("Erro ao obter o tamanho total dos backups");
     return (
-      <div className="h-full w-full border rounded-md p-2 flex flex-col gap-2">
+      <div className="w-full lg:max-w-[49.5%] md:max-w-full max-h-[38rem] border rounded-md p-2 flex flex-col gap-2">
         <p>Total de Dados Transferidos</p>
         <p>Erro ao obter o tamanho total dos backups</p>
       </div>
@@ -41,7 +41,7 @@ const TotalSizeTransferPerDay = () => {
 
   if (!data) {
     return (
-      <div className="h-full w-full border rounded-md p-2 flex flex-col gap-2">
+      <div className="w-full lg:max-w-[49.5%] md:max-w-full max-h-[38rem] border rounded-md p-2 flex flex-col gap-2">
         <p>Total de Dados Transferidos</p>
         <p>Não foi possível obter o tamanho total dos backups</p>
       </div>
@@ -65,7 +65,7 @@ const TotalSizeTransferPerDay = () => {
   });
   
   return (
-    <Card className="lg:max-w-[49.5%] md:max-w-full w-full max-h-[38rem]">
+    <Card className="lg:max-w-[50%] md:max-w-full w-full max-h-[38rem]">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <p>Total de Dados Transferidos</p>

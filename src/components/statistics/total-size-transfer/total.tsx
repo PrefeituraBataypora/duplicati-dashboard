@@ -25,7 +25,7 @@ const TotalSizeTransfer = () => {
   if (isError) {
     toast.error("Erro ao obter o tamanho total dos backups");
     return (
-      <div className="w-full max-w-[49.5%]border rounded-md p-2 flex flex-col gap-2">
+      <div className="w-full lg:max-w-[49.5%] md:max-w-full max-h-[38rem] border rounded-md p-2 flex flex-col gap-2">
         <p>Total de Dados Transferidos</p>
         <p>Erro ao obter o tamanho total dos backups</p>
       </div>
@@ -34,7 +34,7 @@ const TotalSizeTransfer = () => {
 
   if (!data) {
     return (
-      <div className="w-full max-w-[49.5%] border rounded-md p-2 flex flex-col gap-2">
+      <div className="w-full lg:max-w-[49.5%] md:max-w-full max-h-[38rem] border rounded-md p-2 flex flex-col gap-2">
         <p>Total de Dados Transferidos</p>
         <p>Não foi possível obter o tamanho total dos backups</p>
       </div>
