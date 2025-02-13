@@ -6,6 +6,7 @@ import { useTabStore } from "@/providers/tab";
 import { toast } from "sonner";
 import { CreateDevice } from "@/components/device/create";
 import { ChangeThemeDropdown } from "./change-theme";
+import { RotateCcw } from "lucide-react";
 
 const Navbar = () => {
   const { counter, setCounter } = useTabStore((state) => state);
@@ -16,10 +17,15 @@ const Navbar = () => {
       <div className="flex items-center gap-2">
         <ChangeThemeDropdown />
         <CreateDevice />
-        <Button variant="secondary" onClick={() => {
-          setCounter(counter + 1);
-          toast("Atualizando informações");
-        }}>
+        <Button
+          className="flex items-center gap-2"
+          variant="secondary"
+          onClick={() => {
+            setCounter(counter + 1);
+            toast("Atualizando informações");
+          }}
+        >
+          <RotateCcw />
           Atualizar
         </Button>
         <Hour />

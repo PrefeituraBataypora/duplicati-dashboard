@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { dayjs } from "@/lib/dayjs";
+import { Button } from "../ui/button";
 
 const Hour = () => {
   const [time, setTime] = useState(new Date());
@@ -14,7 +15,7 @@ const Hour = () => {
     return () => clearInterval(timer);
   });
 
-  return <p>{dayjs(time).format("HH:mm:ss")}</p>;
+  return <Button variant="secondary">{dayjs(time).format("HH:mm:ss")}</Button>;
 };
 
 export { Hour };
