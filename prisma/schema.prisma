@@ -97,9 +97,9 @@ model BackupLog {
   backupId String
   logId    Int    @unique
 
-  exception   String
+  exception   Json
   message     String
-  operationid String
+  operationid Int
   timestamp   DateTime
   type        String
 
