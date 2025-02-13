@@ -5,6 +5,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import { useTabStore } from "@/providers/tab";
 import { toast } from "sonner";
 import { CreateDevice } from "@/components/device/create";
+import { ChangeThemeDropdown } from "./change-theme";
 
 const Navbar = () => {
   const { counter, setCounter } = useTabStore((state) => state);
@@ -13,6 +14,7 @@ const Navbar = () => {
     <div className="w-full border rounded-md p-2 h-12 flex items-center justify-between">
       <SidebarTrigger />
       <div className="flex items-center gap-2">
+        <ChangeThemeDropdown />
         <CreateDevice />
         <Button variant="secondary" onClick={() => {
           setCounter(counter + 1);

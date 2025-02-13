@@ -65,7 +65,7 @@ const CreateDevice = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="flex items-center gap-2">
+        <Button className="flex items-center gap-2" variant="secondary">
           <Plus />
           Criar
         </Button>
