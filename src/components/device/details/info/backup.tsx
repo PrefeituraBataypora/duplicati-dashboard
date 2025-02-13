@@ -9,12 +9,14 @@ import { Backup, Schedule } from "@prisma/client";
 import dayjs from "dayjs";
 import { ChevronUp, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { Logs } from "../log";
 
 interface BackupProps {
+  deviceIp: string;
   backups: Backup[];
 }
 
-const Backups = ({ backups }: BackupProps) => {
+const Backups = ({ backups, deviceIp }: BackupProps) => {
   const [isBackupInfoOpen, setIsBackupInfoOpen] = useState(false);
 
   return (
@@ -83,6 +85,7 @@ const Backups = ({ backups }: BackupProps) => {
                     {backup.metadata.SourceFilesCount}
                   </p>
                 </div>
+                <Logs backup={backup} deviceIp={deviceIp} />
               </div>
             );
           })}

@@ -26,7 +26,7 @@ const DetailsPage = () => {
         {device.alias && device.alias + " - "}
         {device.ip}
       </p>
-      {device.backups && <Backups backups={device.backups} />}
+      {device.backups && <Backups backups={device.backups} deviceIp={device.ip} />}
       {/* @ts-expect-error type error */}
       {device.serverState && <ServerState serverState={device.serverState} />}
       {device.systemInfo && <SystemInfo systemInfo={device.systemInfo} />}
