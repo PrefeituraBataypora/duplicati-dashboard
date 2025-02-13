@@ -3,6 +3,7 @@ import { getDevices } from "@/actions/device/get-devices";
 import { DetailsPage } from "@/components/device/details";
 import { DevicesTable } from "@/components/device/table";
 import { DeviceTableItem } from "@/components/device/table/item";
+import { StatisticsPage } from "@/components/statistics";
 import { useTabStore } from "@/providers/tab";
 import { useQuery } from "@tanstack/react-query";
 
@@ -20,6 +21,10 @@ const Page = () => {
 
   if (tab === "details") {
     return <DetailsPage />;
+  }
+
+  if (tab === "statistics") {
+    return <StatisticsPage />;
   }
 
   return (

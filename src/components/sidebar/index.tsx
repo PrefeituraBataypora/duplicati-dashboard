@@ -19,7 +19,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../ui/collapsible";
-import { LaptopMinimal, List, Smartphone } from "lucide-react";
+import { ChartLine, LaptopMinimal, List, Smartphone } from "lucide-react";
 
 const AppSidebar = () => {
   const { tab, setTab, ip, setDeviceIp } = useTabStore((state) => state);
@@ -56,6 +56,18 @@ const AppSidebar = () => {
                 >
                   <List />
                   <span>Todos</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  isActive={tab === "statistics"}
+                  onClick={() => {
+                    setTab("statistics");
+                    setDeviceIp(undefined);
+                  }}
+                >
+                  <ChartLine />
+                  <span>Gráficos</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <Collapsible className="group/collapsible">
