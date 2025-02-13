@@ -74,6 +74,7 @@ const DeviceTableItem = ({
         });
         queryClient.invalidateQueries({ queryKey: ["device-item", ip] });
         toast.error(`Erro ao atualizar informações do dispositivo ${ip}`);
+        
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter, refreshTrigger]);
