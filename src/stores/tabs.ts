@@ -1,7 +1,7 @@
 import { createStore } from "zustand/vanilla";
 
 type TabState = {
-  tab: "devices" | "details";
+  tab: "devices" | "details" | "statistics";
   ip?: string;
   counter: number;
 };
