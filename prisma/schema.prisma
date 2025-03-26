@@ -60,7 +60,8 @@ model Backup {
   id       String @id @default(uuid())
   deviceId String
 
-  duplicatiId String @unique
+  name        String?
+  duplicatiId String  @unique
   description String
   targetUrl   String
   metadata    Json

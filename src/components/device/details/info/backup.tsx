@@ -36,6 +36,7 @@ const Backups = ({ backups, deviceIp }: BackupProps) => {
             return (
               <div key={backup.id} className="border rounded-md p-2">
                 <p>ID do Backup (duplicati): {backup.duplicatiId}</p>
+                <p>Nome do Backup (duplicati): {backup.name}</p>
                 <p>
                   Descrição do Backup:{" "}
                   {backup.description ? backup.description : "Sem descrição"}

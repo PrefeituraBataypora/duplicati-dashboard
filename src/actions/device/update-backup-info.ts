@@ -27,6 +27,7 @@ const updateDeviceBackupInfo = async ({
           duplicatiId: Backup.ID, // Garantindo que o critério de busca seja um identificador único
         },
         update: {
+          name: Backup.Name,
           description: Backup.Description,
           metadata: Backup.Metadata,
           targetUrl: Backup.TargetURL,
@@ -34,6 +35,7 @@ const updateDeviceBackupInfo = async ({
         create: {
           deviceId: deviceInfo.id,
           duplicatiId: Backup.ID,
+          name: Backup.Name,
           description: Backup.Description,
           metadata: Backup.Metadata,
           targetUrl: Backup.TargetURL,
