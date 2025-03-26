@@ -40,7 +40,8 @@ const Backups = ({ backups, deviceIp }: BackupProps) => {
                   Descrição do Backup:{" "}
                   {backup.description ? backup.description : "Sem descrição"}
                 </p>
-                <p>Local de Salvamento: {backup.targetUrl}</p>
+                {/* If you are saving to a location that requires authentication (e.g. ssh), duplicati does not hide sensitive credentials, be careful when displaying the next line */}
+                {/* <p>Local de Salvamento: {backup.targetUrl}</p> */}
                 <div>
                   Agendamentos:
                   {/* @ts-expect-error prisma type */}
